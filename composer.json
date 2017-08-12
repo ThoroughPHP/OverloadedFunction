@@ -1,0 +1,35 @@
+{
+    "name": "sevavietl/overloaded-function",
+    "description": "Function overloading wrapper for php.",
+    "version": "0.0.1",
+    "type": "library",
+    "keywords": [
+        "php",
+        "function",
+        "overloading"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sevavietl",
+            "email": "sevavietl@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sevavietl\\OverloadedFunction\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sevavietl\\OverloadedFunction\\Tests\\Unit\\": "tests/unit/"
+        },
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    }
+}
