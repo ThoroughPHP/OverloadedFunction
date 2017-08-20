@@ -5,6 +5,7 @@ namespace Sevavietl\OverloadedFunction\Signature;
 use Sevavietl\OverloadedFunction\Signature\Types\Type;
 use Sevavietl\OverloadedFunction\Signature\Types\UnionType;
 use Sevavietl\OverloadedFunction\Signature\Types\IntersectionType;
+use Sevavietl\OverloadedFunction\Signature\Types\ArrayType;
 use Sevavietl\OverloadedFunction\Signature\Types\OptionalType;
 
 class Signature
@@ -27,6 +28,10 @@ class Signature
             if (($optional = $this->isOptional($paramType))) {
                 $paramType = substr($paramType, 1);
             }
+            
+            if ($array = $this->isArray($paramType)) {
+                $paramType = substr($paramType, 0, -2);
+            }
 
             if ($this->isUnion($paramType)) {
                 $type = new UnionType(explode(self::UNION_TYPE_SEPARATOR, $paramType));
@@ -36,6 +41,8 @@ class Signature
                 $type = new Type($paramType);
             }
 
+            $type = $array ? new ArrayType($type) : $type;
+
             return $optional ? new OptionalType($type) : $type;
         }, $paramTypes);
     }
@@ -43,6 +50,11 @@ class Signature
     private function isOptional($paramType)
     {
         return strpos($paramType, '?') === 0;
+    }
+
+    private function isArray($paramType)
+    {
+        return preg_match('/(?:\[\])$/', $paramType);
     }
 
     private function isUnion($paramType)

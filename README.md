@@ -9,7 +9,8 @@ Table of Contents
     - [1. Simple signature](#simple-signature)
     - [2. Union types](#union-types)
     - [3. Intersection types](#intersection-types)
-    - [4. Optional parameters](#optional-parameters)
+    - [4. Typed arrays](#typed-arrays)
+    - [5. Optional parameters](#optional-parameters)
 
 <a name="General usage"></a>
 
@@ -62,9 +63,25 @@ Sometimes you allow parameter to be not of one type, but of several types.
     var_dump($func('1')) // => bool(true)
 ```
 
+<a name="typed-arrays"></a>
+
+### 4. Typed arrays:
+
+You can restrict your parameter to be an array of elements of certain types.
+
+```php
+    $func = new OverloadedFunction([
+        'integer[]' => function ($arr) { return 'integer'; },
+        'integer|string[]' => function ($arr) { return 'mixed'; }
+    ]);
+
+    var_dump($func([1, 2, 3])) // => string(7) "integer"
+    var_dump($func([1, 2, '3'])) // => string(5) "mixed"
+```
+
 <a name="optional-parameters"></a>
 
-### 4. Optional parameters:
+### 5. Optional parameters:
 
 Sometimes you allow parameter to be optional. Make sure you provide default values for such cases. 
 

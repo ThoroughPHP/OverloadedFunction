@@ -4,8 +4,7 @@ namespace Sevavietl\OverloadedFunction\Tests\Unit\Signature;
 
 use Sevavietl\OverloadedFunction\Signature\Signature;
 use Sevavietl\OverloadedFunction\Signature\Types\Type;
-use Sevavietl\OverloadedFunction\Signature\Types\DisjoinedType;
-use Sevavietl\OverloadedFunction\Signature\Types\ConjoinedType;
+use Sevavietl\OverloadedFunction\Signature\Types\ArrayType;
 use Sevavietl\OverloadedFunction\Signature\Types\OptionalType;
 
 class SignatureTest extends \TestCase
@@ -13,7 +12,7 @@ class SignatureTest extends \TestCase
     public function testParseStringRepresentation()
     {
         // Arrange
-        $stringRepresentation = 'string,integer,?boolean';
+        $stringRepresentation = 'string,integer[],?boolean';
 
         // Act
         $signature = new Signature($stringRepresentation);
@@ -28,8 +27,8 @@ class SignatureTest extends \TestCase
         $this->assertInstanceOf(Type::class, $stringType);
         $this->assertAttributeEquals('string', 'typeString', $stringType);
         
-        $this->assertInstanceOf(Type::class, $integerType);
-        $this->assertAttributeEquals('integer', 'typeString', $integerType);
+        $this->assertInstanceOf(ArrayType::class, $integerType);
+        $this->assertAttributeInstanceOf(Type::class, 'type', $integerType);
         
         $this->assertInstanceOf(OptionalType::class, $booleanType);
         $this->assertAttributeInstanceOf(Type::class, 'type', $booleanType);
@@ -66,7 +65,11 @@ class SignatureTest extends \TestCase
             ['string, integer, boolean', ['foo', 1], false],
             ['string, integer, ?boolean', ['foo', 1], true],
             ['NULL', [], true],
-            ['string, ArrayAccess, integer', ['foo', new \ArrayIterator, 1], true]
+            ['string, ArrayAccess, integer', ['foo', new \ArrayIterator, 1], true],
+            ['string[]', [['foo', 'bar']], true],
+            ['string[]', ['foo'], false],
+            ['string[]', [['1', '2', 3]], false],
+            ['string[]', [[1, 2, 3]], false],
         ];
     }
 }

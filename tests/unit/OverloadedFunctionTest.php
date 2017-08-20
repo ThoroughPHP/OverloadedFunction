@@ -123,6 +123,36 @@ class OverloadedFunctionTest extends \TestCase
                 [2],
                 true
             ],
+            [
+                [
+                    'integer[]' => function ($arr) { return 'integer'; },
+                    'integer|string[]' => function ($arr) { return 'mixed'; }
+                ],
+                [[1, 2, 3]],
+                'integer'
+            ],
+            [
+                [
+                    'integer[]' => function ($arr) { return 'integer'; },
+                    'integer|string[]' => function ($arr) { return 'mixed'; }
+                ],
+                [[1, 2, '3']],
+                'mixed'
+            ],
+            [
+                [
+                    'string,?integer[]' => function ($a, $arr) { return true; },
+                ],
+                ['foo', [1, 2]],
+                true
+            ],
+            [
+                [
+                    'string,?integer[]' => function ($a, $arr = []) { return true; },
+                ],
+                ['foo'],
+                true
+            ],
         ];
     }
 
