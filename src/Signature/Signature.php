@@ -3,12 +3,15 @@
 namespace Sevavietl\OverloadedFunction\Signature;
 
 use Sevavietl\OverloadedFunction\Signature\Types\Type;
-use Sevavietl\OverloadedFunction\Signature\Types\DisjoinedType;
-use Sevavietl\OverloadedFunction\Signature\Types\ConjoinedType;
+use Sevavietl\OverloadedFunction\Signature\Types\UnionType;
+use Sevavietl\OverloadedFunction\Signature\Types\IntersectionType;
 use Sevavietl\OverloadedFunction\Signature\Types\OptionalType;
 
 class Signature
 {
+    const UNION_TYPE_SEPARATOR = '|';
+    const INTERSECTION_TYPE_SEPARATOR = '&';
+
     private $types;
 
     public function __construct($stringRepresentation)
@@ -25,10 +28,10 @@ class Signature
                 $paramType = substr($paramType, 1);
             }
 
-            if ($this->isDisjoined($paramType)) {
-                $type = new DisjoinedType(explode('|', $paramType));
-            } elseif ($this->isConjoined($paramType)) {
-                $type = new ConjoinedType(explode('&', $paramType));
+            if ($this->isUnion($paramType)) {
+                $type = new UnionType(explode(self::UNION_TYPE_SEPARATOR, $paramType));
+            } elseif ($this->isIntersection($paramType)) {
+                $type = new IntersectionType(explode(self::INTERSECTION_TYPE_SEPARATOR, $paramType));
             } else {
                 $type = new Type($paramType);
             }
@@ -42,14 +45,14 @@ class Signature
         return strpos($paramType, '?') === 0;
     }
 
-    private function isDisjoined($paramType)
+    private function isUnion($paramType)
     {
-        return strpos($paramType, '|') !== false;
+        return strpos($paramType, self::UNION_TYPE_SEPARATOR) !== false;
     }
 
-    private function isConjoined($paramType)
+    private function isIntersection($paramType)
     {
-        return strpos($paramType, '&') !== false;
+        return strpos($paramType, self::INTERSECTION_TYPE_SEPARATOR) !== false;
     }
 
     public function match(array $params)

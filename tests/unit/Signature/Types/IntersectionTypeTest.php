@@ -2,16 +2,16 @@
 
 namespace Sevavietl\OverloadedFunction\Tests\Unit\Signature\Types;
 
-use Sevavietl\OverloadedFunction\Signature\Types\ConjoinedType;
+use Sevavietl\OverloadedFunction\Signature\Types\IntersectionType;
 
-class ConjoinedTypeTest extends \TestCase
+class IntersectionTypeTest extends \TestCase
 {
     /**
      * @dataProvider matchDataProvider
      */
     public function testMatch($typeStrings, $param, $result)
     {
-        $this->assertEquals($result, (new ConjoinedType($typeStrings))->match($param));
+        $this->assertEquals($result, (new IntersectionType($typeStrings))->match($param));
     }
 
     public function matchDataProvider()

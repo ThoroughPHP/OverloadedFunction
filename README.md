@@ -7,8 +7,8 @@ Table of Contents
 =================  
 * [General usage](#general-usage)  
     - [1. Simple signature](#simple-signature)
-    - [2. Conjoined types](#conjoined-types)
-    - [3. Disjoined types](#disjoined-types)
+    - [2. Union types](#union-types)
+    - [3. Intersection types](#intersection-types)
     - [4. Optional parameters](#optional-parameters)
 
 <a name="General usage"></a>
@@ -33,9 +33,9 @@ Parameters signature is a list of types separeted by comma.
     var_dump($func('1', '1')) // => '11'
 ```
 
-<a name="conjoined-types"></a>
+<a name="union-types"></a>
 
-### 2. Conjoined types:
+### 2. Union types:
 
 Sometimes your parameter need to be of a kind, that implements not one interface, but several.
 
@@ -47,9 +47,9 @@ Sometimes your parameter need to be of a kind, that implements not one interface
     var_dump($func(new ArrayIterator)) // => bool(true)
 ```
 
-<a name="disjoined-types"></a>
+<a name="intersection-types"></a>
 
-### 3. Disjoined types:
+### 3. Intersection types:
 
 Sometimes you allow parameter to be not of one type, but of several types.
 

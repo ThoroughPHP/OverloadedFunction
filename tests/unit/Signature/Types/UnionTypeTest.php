@@ -2,7 +2,7 @@
 
 namespace Sevavietl\OverloadedFunction\Tests\Unit\Signature\Types;
 
-use Sevavietl\OverloadedFunction\Signature\Types\DisjoinedType;
+use Sevavietl\OverloadedFunction\Signature\Types\UnionType;
 
 class DisjoinedTypeTest extends \TestCase
 {
@@ -11,7 +11,7 @@ class DisjoinedTypeTest extends \TestCase
      */
     public function testMatch($typeStrings, $param, $result)
     {
-        $this->assertEquals($result, (new DisjoinedType($typeStrings))->match($param));
+        $this->assertEquals($result, (new UnionType($typeStrings))->match($param));
     }
 
     public function matchDataProvider()

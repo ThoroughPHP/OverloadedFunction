@@ -2,7 +2,7 @@
 
 namespace Sevavietl\OverloadedFunction\Signature\Types;
 
-class DisjoinedType implements IType
+class IntersectionType implements IType
 {
     private $types;
 
@@ -16,7 +16,7 @@ class DisjoinedType implements IType
     public function match($param)
     {
         return array_reduce($this->types, function ($carry, $type) use ($param) {
-            return $carry || $type->match($param);
-        }, false);
+            return $carry && $type->match($param);
+        }, true);
     }
 }
