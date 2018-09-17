@@ -2,7 +2,7 @@
 
 namespace Sevavietl\OverloadedFunction;
 
-class UnknownSignatureException extends \BadFunctionCallException
+final class UnknownSignatureException extends \BadFunctionCallException
 {
 
 }

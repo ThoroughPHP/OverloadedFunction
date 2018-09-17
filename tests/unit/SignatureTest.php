@@ -1,13 +1,13 @@
 <?php
 
-namespace Sevavietl\OverloadedFunction\Tests\Unit\Signature;
+namespace Sevavietl\OverloadedFunction\Tests\Unit;
 
-use Sevavietl\OverloadedFunction\Signature\Signature;
+use Sevavietl\OverloadedFunction\Signature;
 use Sevavietl\OverloadedFunction\Signature\Types\Type;
 use Sevavietl\OverloadedFunction\Signature\Types\ArrayType;
 use Sevavietl\OverloadedFunction\Signature\Types\OptionalType;
 
-class SignatureTest extends \TestCase
+final class SignatureTest extends \TestCase
 {
     public function testParseStringRepresentation()
     {
@@ -18,20 +18,7 @@ class SignatureTest extends \TestCase
         $signature = new Signature($stringRepresentation);
 
         // Assert
-        $types = $this->getAttribute($signature, 'types');
-
-        $stringType = $types[0];
-        $integerType = $types[1];
-        $booleanType = $types[2];
-
-        $this->assertInstanceOf(Type::class, $stringType);
-        $this->assertAttributeEquals('string', 'typeString', $stringType);
-        
-        $this->assertInstanceOf(ArrayType::class, $integerType);
-        $this->assertAttributeInstanceOf(Type::class, 'type', $integerType);
-        
-        $this->assertInstanceOf(OptionalType::class, $booleanType);
-        $this->assertAttributeInstanceOf(Type::class, 'type', $booleanType);
+        $this->assertAttributeCount(3, 'guards', $signature);
     }
 
     public function testParseEmptyStringRepresentation()
@@ -43,7 +30,7 @@ class SignatureTest extends \TestCase
         $signature = new Signature($stringRepresentation);
 
         // Assert
-        $this->assertAttributeEmpty('types', $signature);
+        $this->assertAttributeEmpty('guards', $signature);
     }
 
     /**

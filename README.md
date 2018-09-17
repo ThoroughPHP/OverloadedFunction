@@ -1,5 +1,10 @@
 # Overloaded Function
 
+[![Build Status](https://travis-ci.com/Sevavietl/OverloadedFunction.svg?branch=master)](https://travis-ci.com/Sevavietl/OverloadedFunction)
+[![Coverage Status](https://coveralls.io/repos/github/Sevavietl/OverloadedFunction/badge.svg)](https://coveralls.io/github/Sevavietl/OverloadedFunction)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
+
 PHP actually does not support [function overloading](https://en.wikipedia.org/wiki/Function_overloading), as functions distinguished but name only.
 This is a class that helps to imulate function overloading in PHP.
 

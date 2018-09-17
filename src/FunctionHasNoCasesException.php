@@ -2,7 +2,7 @@
 
 namespace Sevavietl\OverloadedFunction;
 
-class FunctionHasNoCasesException extends \DomainException
+final class FunctionHasNoCasesException extends \DomainException
 {
 
 }

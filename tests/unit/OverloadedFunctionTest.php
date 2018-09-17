@@ -6,7 +6,7 @@ use Sevavietl\OverloadedFunction\OverloadedFunction;
 use Sevavietl\OverloadedFunction\FunctionHasNoCasesException;
 use Sevavietl\OverloadedFunction\UnknownSignatureException;
 
-class OverloadedFunctionTest extends \TestCase
+final class OverloadedFunctionTest extends \TestCase
 {
     protected $func;
 
