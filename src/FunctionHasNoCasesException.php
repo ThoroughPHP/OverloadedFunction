@@ -1,6 +1,6 @@
 <?php
 
-namespace Sevavietl\OverloadedFunction;
+namespace ThoroughPHP\OverloadedFunction;
 
 final class FunctionHasNoCasesException extends \DomainException
 {

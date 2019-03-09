@@ -1,7 +1,7 @@
 # Overloaded Function
 
-[![Build Status](https://travis-ci.com/Sevavietl/OverloadedFunction.svg?branch=master)](https://travis-ci.com/Sevavietl/OverloadedFunction)
-[![Coverage Status](https://coveralls.io/repos/github/Sevavietl/OverloadedFunction/badge.svg)](https://coveralls.io/github/Sevavietl/OverloadedFunction)
+[![Build Status](https://travis-ci.com/ThoroughPHP/OverloadedFunction.svg?branch=master)](https://travis-ci.com/ThoroughPHP/OverloadedFunction)
+[![Coverage Status](https://coveralls.io/repos/github/ThoroughPHP/OverloadedFunction/badge.svg)](https://coveralls.io/github/ThoroughPHP/OverloadedFunction)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
 

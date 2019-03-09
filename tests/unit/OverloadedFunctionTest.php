@@ -1,10 +1,10 @@
 <?php
 
-namespace Sevavietl\OverloadedFunction\Tests\Unit;
+namespace ThoroughPHP\OverloadedFunction\Tests\Unit;
 
-use Sevavietl\OverloadedFunction\OverloadedFunction;
-use Sevavietl\OverloadedFunction\FunctionHasNoCasesException;
-use Sevavietl\OverloadedFunction\UnknownSignatureException;
+use ThoroughPHP\OverloadedFunction\OverloadedFunction;
+use ThoroughPHP\OverloadedFunction\FunctionHasNoCasesException;
+use ThoroughPHP\OverloadedFunction\UnknownSignatureException;
 
 final class OverloadedFunctionTest extends \TestCase
 {

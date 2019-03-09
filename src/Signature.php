@@ -1,12 +1,12 @@
 <?php
 
-namespace Sevavietl\OverloadedFunction;
+namespace ThoroughPHP\OverloadedFunction;
 
-use TypeGuard\Guard;
+use ThoroughPHP\TypeGuard\TypeGuard;
 
 final class Signature
 {
-    /** @var Guard[] */
+    /** @var TypeGuard[] */
     private $guards;
 
     public function __construct(string $stringRepresentation)
@@ -18,15 +18,15 @@ final class Signature
     {
         $paramTypes = array_filter(array_map('trim', explode(',', $stringRepresentation)));
 
-        $this->guards = array_map(function (string $paramType): Guard {
-            return new Guard($paramType);
+        $this->guards = array_map(function (string $paramType): TypeGuard {
+            return new TypeGuard($paramType);
         }, $paramTypes);
     }
 
     public function match(array $params)
     {
         return array_reduce(
-            array_map(function (?Guard $guard, $param): bool {
+            array_map(function (?TypeGuard $guard, $param): bool {
                 if (null === $guard) {
                     return false;
                 }

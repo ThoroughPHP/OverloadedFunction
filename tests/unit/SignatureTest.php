@@ -1,11 +1,11 @@
 <?php
 
-namespace Sevavietl\OverloadedFunction\Tests\Unit;
+namespace ThoroughPHP\OverloadedFunction\Tests\Unit;
 
-use Sevavietl\OverloadedFunction\Signature;
-use Sevavietl\OverloadedFunction\Signature\Types\Type;
-use Sevavietl\OverloadedFunction\Signature\Types\ArrayType;
-use Sevavietl\OverloadedFunction\Signature\Types\OptionalType;
+use ThoroughPHP\OverloadedFunction\Signature;
+use ThoroughPHP\OverloadedFunction\Signature\Types\Type;
+use ThoroughPHP\OverloadedFunction\Signature\Types\ArrayType;
+use ThoroughPHP\OverloadedFunction\Signature\Types\OptionalType;
 
 final class SignatureTest extends \TestCase
 {

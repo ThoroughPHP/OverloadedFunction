@@ -1,7 +1,8 @@
 <?php
 
-namespace Sevavietl\OverloadedFunction;
+namespace ThoroughPHP\OverloadedFunction;
 
+use ThoroughPHP\TypeGuard\TypeGuard;
 use TypeGuard\Guard;
 
 final class OverloadedFunction
@@ -32,7 +33,7 @@ final class OverloadedFunction
     private function prepareFunction(\SplObjectStorage $cases): void
     {
         $this->func = function (...$args) use ($cases) {
-            /** @var Guard $signature */
+            /** @var TypeGuard $signature */
             foreach ($cases as $signature) {
                 if ($signature->match($args)) {
                     return $cases[$signature](...$args);
